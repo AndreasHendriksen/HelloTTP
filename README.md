@@ -17,7 +17,9 @@ asd
 
 # Endpoints
 GET : stuff/asd
+
 GET : stuff/asdasd
+
 GET : stuff/asdsss
 
 # Contributions
