@@ -1,28 +1,10 @@
-# HelloTTP Placeholder web api
-Quick and easy HelloWorld web api to check your network connections.
-
-# Quick Start
-Run from dockerhub yo, ezpz
-
-# Usage
-asd
-## Docker
-asd
-
-## Nuget
-asd
-
-## Other thing i dunno
-asd
+# HelloTTP Placeholder Web API
+Quick and easy HelloWorld web api to check network connections to containers in an environment.
 
 # Endpoints
-GET : stuff/asd
-
-GET : stuff/asdasd
-
-GET : stuff/asdsss
-
-# Contributions
-asd
-
-# 
+* GET : */ -------------- (Returns a hello message)
+* POST : */api/data --- (Saves the provided string)
+* GET : */api/data ----- (Returns the string)
+* GET : */418 ---------- (Returns a pretty teapot!)
+* GET : */teapot     
+* POST : */api/c/stop - (Returns Accepted 202 and closes the application)    
