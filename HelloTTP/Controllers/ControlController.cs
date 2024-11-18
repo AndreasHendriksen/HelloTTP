@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace HelloTTP.Controllers
 {
-    [Route("api/control/")]
+    [Route("api/c/")]
     [ApiController]
     public class ControlController : ControllerBase
     {

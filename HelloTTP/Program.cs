@@ -5,6 +5,10 @@ namespace HelloApi
     {
         public static void Main(string[] args)
         {
+            //uint port = 0;
+            //if (args.Length != 0)
+            //    port = uint.Parse(args[0]);
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -41,6 +45,9 @@ namespace HelloApi
             app.UseCors("AllowAllOrigins");
 
             app.MapControllers();
+
+            if (args.Length != 0)
+                app.Urls.Add($"http://*:{uint.Parse(args[0])}");
 
             app.Run();
         }
