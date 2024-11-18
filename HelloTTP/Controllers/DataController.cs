@@ -11,13 +11,6 @@ namespace HelloApi.Controllers
     {
         private static string textData = "Hello World!";
 
-        private readonly IHostApplicationLifetime hostLifetime;
-
-        public DataController(IHostApplicationLifetime _applicationLifetime)
-        {
-            hostLifetime = _applicationLifetime;
-        }
-
         [HttpGet]
         public IActionResult HandleGetString()
         {

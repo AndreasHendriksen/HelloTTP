@@ -5,6 +5,10 @@ namespace HelloApi
     {
         public static void Main(string[] args)
         {
+            //uint port = 0;
+            //if (args.Length != 0)
+            //    port = uint.Parse(args[0]);
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -27,12 +31,11 @@ namespace HelloApi
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (app.Environment.IsDevelopment())
+            //{
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
 
@@ -41,6 +44,9 @@ namespace HelloApi
             app.UseCors("AllowAllOrigins");
 
             app.MapControllers();
+
+            if (args.Length != 0)
+                app.Urls.Add($"http://*:{uint.Parse(args[0])}");
 
             app.Run();
         }
