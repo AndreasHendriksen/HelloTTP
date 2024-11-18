@@ -6,17 +6,10 @@ using System.Text.Json.Serialization;
 namespace HelloApi.Controllers
 {
     [ApiController]
-    [Route("api")]
     public class HelloController : ControllerBase
     {
-        private readonly IHostApplicationLifetime hostLifetime;
-
-        public HelloController(IHostApplicationLifetime _applicationLifetime)
-        {
-            hostLifetime = _applicationLifetime;
-        }
-
         [HttpGet]
+        [Route("/")]
         public IActionResult HandleHello()
         {
             return Ok("Hello from your container!");
@@ -24,35 +17,25 @@ namespace HelloApi.Controllers
 
         [HttpGet]
         [Route("teapot"), Route("418")]
-        public IActionResult HandleTeaPot()
+        public ActionResult HandleTeaPot()
         {
-            string json =
-                "[{\"teapot\":[" +
-                "             ;,'" +
-                "     _o_    ;:;'" +
-                " ,-.'---`.__ ;" +
-                "((j`=====',-'" +
-                " `-\\     /" +
-                "    `-=-'     " +
-                "By Hayley Jane Wakenshaw" +
-                "]}]";
-            JsonResult result = new JsonResult(json);
+            JsonResult result = new JsonResult(
+                new
+                {
+                    message = "I'm a little teapot, short and stout :3",
+                    teapot = new[]
+                    {
+                        "             ;,'",
+                        "     _o_    ;:;'",
+                        " ,-.'---`.__ ;  ",
+                        "((j`=====',-'   ",
+                        " `-\\     /     ",
+                        "    `-=-'       ",
+                    },
+                    artist = "Hayley Jane Wakenshaw"
+                });
             result.StatusCode = 418;
             return result;
-        }
-
-        [HttpGet("stop")]
-        public IActionResult HandleStop()
-        {
-            Thread thread = new Thread(() =>
-            {
-                Thread.Sleep(1000);
-                hostLifetime.StopApplication();
-            });
-            thread.IsBackground = true;
-            thread.Start();
-
-            return Accepted();
         }
     }
 }
